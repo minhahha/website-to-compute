@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Anh Nhớ Em</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    .message {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 2em;
+      animation: move 10s linear infinite;
+      color: #ff66cc;
+      text-shadow: 2px 2px 8px #ff99cc;
+    }
+
+    @keyframes move {
+      0% {
+        left: 100%;
+        top: calc(100% * var(--randY));
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        left: -100%;
+        top: calc(100% * var(--randY));
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  function createMessage() {
+    const message = document.createElement('div');
+    message.className = 'message';
+    message.innerText = 'anh nhớ em';
+
+    const randY = Math.random(); // Random top position
+    message.style.setProperty('--randY', randY);
+
+    document.body.appendChild(message);
+
+    // Remove after animation
+    setTimeout(() => {
+      message.remove();
+    }, 10000);
+  }
+
+  // Tạo dòng chữ mỗi 500ms
+  setInterval(createMessage, 500);
+</script>
+
+</body>
+</html>
